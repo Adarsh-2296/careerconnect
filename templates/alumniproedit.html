@@ -1,0 +1,194 @@
+edit-alumni-profile.html
+
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Alumni Profile</title>
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add your CSS styles here -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5e4d7; /* Nude background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Use min-height instead of height */
+            background-image: url('{% static "images/mes2.jpg" %} '); /* Updated image file name */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9; /* Adjust opacity as needed */
+        }
+
+        header {
+            background-color: #dd978f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 110px; /* Adjust the size of the logo */
+            height: auto;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px; /* Adjust the gap between icons */
+        }
+
+        .options button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff; /* White color for the icons */
+            margin: 0;
+            padding: 0;
+            transition: color 0.3s ease;
+        }
+
+        .options button:hover {
+            color: #dd978f; /* Hover color */
+        }
+
+        .options button.active {
+            color: #dd978f; /* Active color */
+        }
+
+        /* Additional styles for the form */
+        form {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        form label {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 8px;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background-color: #405de6; /* Button color */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #35469c; /* Darker blue on hover */
+        }
+
+        /* Hide unnecessary icons on the edit profile page */
+        .options button:nth-child(2),
+        .options button:nth-child(3),
+        .options button:nth-child(4) {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="cc logo.png" alt="Career Connect Logo">
+        <h1>Lets Connect the College to Career.</h1>
+        <div class="options">
+            <button class="active" onclick="location.href='profile.html'"><i class="fas fa-home"></i></button>
+        </div>
+    </header>
+    <div class="profile">
+        <h2>Edit Your Profile</h2>
+        <form id="profileForm">
+            <label for="current-job">Current Job:</label>
+            <input type="text" id="current-job" name="current-job" required>
+
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" required>
+
+            <label for="position">Position:</label>
+            <input type="text" id="position" name="position" required>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="whatsapp">WhatsApp Number:</label>
+            <input type="text" id="whatsapp" name="whatsapp">
+
+            <label for="linkedin">LinkedIn Profile:</label>
+            <input type="text" id="linkedin" name="linkedin">
+
+            <label for="instagram">Instagram Link:</label>
+            <input type="text" id="instagram" name="instagram">
+
+            <label for="website">Website Link:</label>
+            <input type="text" id="website" name="website">
+
+            <label for="git">Git Profile:</label>
+            <input type="text" id="git" name="git">
+
+            <button type="button" class="submit-btn" onclick="submitForm()">Save Changes</button>
+        </form>
+    </div>
+
+    <script>
+      <!-- Add this script at the end of your edit-alumni-profile.html file -->
+    
+    function submitForm() {
+        const formData = new FormData(document.getElementById('profileForm'));
+
+        // Use AJAX to send form data to Django view
+        fetch('/save-alumni-profile/', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Redirect to the alumni-profile page
+                window.location.href = 'alumni-profile.html';
+            } else {
+                alert('Failed to save profile. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+
+
+    </script>
+</body>
+</html>

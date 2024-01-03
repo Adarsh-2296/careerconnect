@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Connect</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5e4d7; /* Nude background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('{% static "images/mes2.jpg" %} '); /* Updated image file name */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9; /* Adjust opacity as needed */
+        
+        }
+
+        #logo {
+            width: 400px; /* Set the desired width for the logo */
+            height: auto; /* Maintain aspect ratio */
+            vertical-align: middle;
+        }
+
+        #login-sections {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        .login-section {
+            width: 100%; /* Set to 100% to make it the same width as the parent container */
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 100%; /* Set to 100% to make it the same width as the parent container */
+            background-color: #f5e4d7; /* Nude button color */
+            color: #333; /* Dark text color for contrast */
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #dd978f; /* Darker nude on hover */
+        }
+
+        .options h2 {
+            margin-bottom: 10px;
+            color: #333; /* Dark text color for contrast */
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: left;">
+        <img id="logo" src="{% static 'images/cc logo.png' %}" alt="logo" width="20px" />
+    </div>
+    <div id="login-sections">
+        <div class="login-section">
+            <div class="options">
+                <form>
+                    <button type="menu" formaction="{% url 'deptlogin' %}">Department Login</button>
+                </form>
+            </div>
+            <form>
+                <!-- Department login form fields -->
+            </form>
+        </div>
+
+        <div class="login-section">
+            <form>
+                <!-- Common login/register form fields -->
+            </form>
+            <div class="options">
+                <h2>Register/Login</h2>
+                <form>
+                    <button type="menu" formaction="{% url 'login' %}">Student Login</button>
+                </form>
+                <form>
+                    <button type="menu" formaction="{% url 'alulogin' %}">Alumni Login</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

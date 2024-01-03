@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add your CSS styles here -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5e4d7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('{% static "images/mes2.jpg" %} ');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+        }
+
+        header {
+            background-color: #dd978f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 110px;
+            height: auto;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            margin: 0 20px; /* Add some margin for separation */
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .options {
+            display: flex;
+            gap: 30px;
+        }
+
+        .options button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            transition: color 0.3s ease;
+        }
+
+        .options button:hover {
+            color: #dd978f;
+        }
+
+        .options button.active {
+            color: #dd978f;
+        }
+
+        .profile {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="{% static 'images/cc logo.png' %}" alt="Career Connect Logo">
+        <h1>Lets Connect the College to Career.</h1>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="options">
+            <button class="active" onclick="location.href='profile.html'"><i class="fas fa-home"></i></button>
+            <form>
+                <button type="menu" formaction="{% url 'stdproedit' %}"><i class="fas fa-edit"></i></button>
+            </form>
+            <button onclick="location.href='menu.html'"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+    <div class="profile">
+        <img src="sai.jpg" alt="Profile Photo">
+        <h2>[Student Name]</h2>
+        <p>[Department]</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Login</title>
+    <style>
+        body {
+             font-family: 'Arial', sans-serif;
+            background-color: #f5e4d7; /* Nude background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('{% static "images/mes2.jpg" %} '); /* Updated image file name */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9; /* Adjust opacity as needed */
+        }
+        header {
+            background-color: #dd978f; /* Header background color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #dd978f; /* Nude button color */
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #b07266; /* Darker nude on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Department  Login</h1>
+    </header>
+
+    <form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <script>
+        function login() {
+            // Replace with your actual email and password validation logic
+            const validEmail = "department@example.com";
+            const validPassword = "password123";
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (email === validEmail && password === validPassword) {
+                alert("Login successful!");
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>

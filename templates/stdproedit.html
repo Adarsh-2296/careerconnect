@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student Profile</title>
+    <!-- Add Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5e4d7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('{% static "images/mes2.jpg" %} ');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+        }
+
+        header {
+            background-color: #dd978f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 110px;
+            height: auto;
+        }
+
+        .options {
+            display: flex;
+            gap: 20px;
+        }
+
+        .options button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            transition: color 0.3s ease;
+        }
+
+        .options button:hover {
+            color: #dd978f;
+        }
+
+        .options button.active {
+            color: #dd978f;
+        }
+
+        form {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Adjust as needed */
+        }
+
+        form label {
+            width: calc(45% - 10px); /* Adjust the width as needed with margin */
+            text-align: left;
+            margin-bottom: 8px;
+        }
+
+        form textarea, form select {
+            width: calc(45% - 10px); /* Adjust the width as needed with margin */
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            width: 100%; /* Full width for the button */
+            background-color: #405de6;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #35469c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="{% static 'images/cc logo.png' %}" alt="Career Connect Logo">
+        <h1>Lets Connect the College to Career.</h1>
+        <div class="options">
+            <button class="active" onclick="location.href='profile.html'"><i class="fas fa-home"></i></button>
+        </div>
+    </header>
+    <div class="profile">
+        <h2>Edit Your Profile</h2>
+        <form method="post" enctype="multipart/form-data" id="registrationForm" onsubmit="register()">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <label for="img">Upload Profile Photo</label>
+            <input type="file" id="img" name="img">
+                
+            
+            <label for="experience">Experience:</label>
+            <textarea id="experience" name="experience" rows="4"></textarea>
+
+            <label for="skills">Skills:</label>
+            <textarea id="skills" name="skills" rows="4"></textarea>
+
+            <label for="internships">Internships:</label>
+            <textarea id="internships" name="internships" rows="4"></textarea>
+
+            <label for="workDone">Work Done:</label>
+            <select id="workDone" name="workDone">
+                <option value="" selected disabled>Select an option</option>
+                <option value="project">Project</option>
+                <option value="research">Research</option>
+                <option value="volunteer">Volunteer Work</option>
+                <option value="fresher">Fresher</option>
+            </select>
+
+            <label for="workDetails">Work Details:</label>
+            <textarea id="workDetails" name="workDetails" rows="4"></textarea>
+
+            <label for="hobbies">Hobbies:</label>
+            <textarea id="hobbies" name="hobbies" rows="4" required></textarea>
+
+            <label for="achievements">Achievements:</label>
+            <textarea id="achievements" name="achievements" rows="4" required></textarea>
+
+            
+            <button type="submit" class="submit-btn" onclick="submitForm()">Save Changes</button>
+        </form>
+    </div>
+
+    
+</body>
+</html>

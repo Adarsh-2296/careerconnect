@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <style>
+        body {
+             font-family: 'Arial', sans-serif;
+            background-color: #f5e4d7; /* Nude background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('{% static "images/mes2.jpg" %} '); /* Updated image file name */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9; /* Adjust opacity as needed */
+        }
+
+        header {
+            background-color: #dd978f; /* Header background color */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            width: 80%; /* Adjusted width for better visibility */
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        a{
+            align-items: self-end;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #405de6; /* Button color */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #35469c; /* Darker blue on hover */
+        }
+
+        button.login {
+            background-color: #dd978f;
+            margin-top: 10px;
+        }
+
+        button.login:hover {
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student Login</h1>
+    </header><b></b>
+    
+    <form method="post" enctype="multipart/form-data" ondblclick="SubmitEvent">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+   
+
+
+</body>
+
+</html>
+<div style="align-items: baseline;">
+<a href="{% url 'stdregister' %}" style="text-align: left;">New Register</a>
+    <a href="{% url 'forgotps' %}" style="text-align: right;">Forgot Password</a>
+</div>
